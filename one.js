@@ -25,8 +25,14 @@ function fullscreen(elementId) {
 
     if (elementToFullscreen.requestFullscreen) {
         elementToFullscreen.requestFullscreen();
+    } else if (elementToFullscreen.mozRequestFullScreen) {
+        elementToFullscreen.mozRequestFullScreen();
     } else if (elementToFullscreen.webkitRequestFullscreen) {
         elementToFullscreen.webkitRequestFullscreen();
+    } else if (elementToFullscreen.webkitEnterFullscreen) {
+        // webkitRequestFullscreen was deprecated:
+        // https://developer.apple.com/documentation/webkit/domelement/1476160-webkitrequestfullscreen
+        elementToFullscreen.webkitEnterFullscreen();
     } else if (elementToFullscreen.msRequestFullScreen) {
         elementToFullscreen.msRequestFullScreen();
     }
